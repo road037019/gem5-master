@@ -1435,13 +1435,13 @@ FullO3CPU<Impl>::instDone(ThreadID tid, DynInstPtr &inst)
 {
     // Keep an instruction count.
     if (!inst->isMicroop() || inst->isLastMicroop()) {
-		//fgl begin
-		static int i = 1;
-		if(i++ == 1000000){
-			Stats::dump();
-			Stats::reset();
-			i = 1;
-		}//fgl end;
+//		//fgl begin
+//		static int i = 1;
+//		if(i++ == 1000000){
+//			Stats::dump();
+//			Stats::reset();
+//			i = 1;
+//		}//fgl end;
 
         thread[tid]->numInst++;
         thread[tid]->numInsts++;
