@@ -555,7 +555,7 @@ class BaseCPU : public MemObject
         int size = cpuList.size();
         for (int i = 0; i < size; ++i)
             total += cpuList[i]->totalInsts();
-
+                //std::cout << "fgl:total:" << total << std::endl; //追踪sim_insts++的位置
         return total;
     }
 

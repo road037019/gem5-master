@@ -67,6 +67,7 @@
 #include "params/DerivO3CPU.hh"
 #include "sim/faults.hh"
 #include "sim/full_system.hh"
+#include "sim/sim_events.hh"  //fgl dump 500 times stop;
 
 using namespace std;
 
@@ -1366,8 +1367,22 @@ DefaultCommit<Impl>::updateComInstStats(DynInstPtr &inst)
 {
     ThreadID tid = inst->threadNumber;
 
-    if (!inst->isMicroop() || inst->isLastMicroop())
+    if (!inst->isMicroop() || inst->isLastMicroop()){
+                //fgl begin;
+                /*static int  i = 0;
+                //static int cnt = 0;
+                i++;
+                if (i > 1000000){
+                        Stats::dump();
+                        Stats::reset();
+                        i = 0;
+                }//fgl end;*/
+                //if (cnt ++ == 500) //fgl use the exitSimLoop() should add the head file sim/sim_events.hh
+                //	exitSimLoop("m5_exit instruction encountered", 0, curTick(), 0, true);
+
         instsCommitted[tid]++;
+        }
+
     opsCommitted[tid]++;
 
     // To match the old model, don't count nops and instruction

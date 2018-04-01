@@ -259,7 +259,7 @@ struct Global
 Global::Global()
 {
     simInsts
-        .functor(BaseCPU::numSimulatedInsts)
+        .functor(BaseCPU::numSimulatedInsts) //追sim_insts，没有找到++的位置，在numSimlatedInsts接着往下找
         .name("sim_insts")
         .desc("Number of instructions simulated")
         .precision(0)
