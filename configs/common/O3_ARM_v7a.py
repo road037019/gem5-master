@@ -163,10 +163,10 @@ class O3_ARM_v7a_DCache(Cache):
     tag_latency = 2
     data_latency = 2
     response_latency = 2
-    mshrs = 2
+    mshrs = 1
     tgts_per_mshr = 8
     size = '32kB'
-    assoc = 2
+    assoc = 4
     write_buffers = 16
     # Consider the L2 a victim cache also for clean lines
     writeback_clean = True
